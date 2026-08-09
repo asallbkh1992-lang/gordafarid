@@ -1,0 +1,1559 @@
+/* ===== فونت‌ها و متغیرها ===== */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap");
+
+:root {
+  --gold: #d4a853;
+  --gold-light: #f0d78c;
+  --cream: #f5e6c8;
+  --brick: #8b2500;
+  --brick-dark: #5c1800;
+  --navy: #0d1b2e;
+  --navy-light: #1a2e4a;
+  --parchment: rgba(245, 230, 200, 0.12);
+  --parchment-solid: rgba(20, 15, 10, 0.75);
+  --border-gold: rgba(212, 168, 83, 0.6);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --transition: 0.3s ease;
+}
+
+/* ===== تنظیمات عمومی ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  direction: rtl;
+  min-height: 100vh;
+  color: var(--cream);
+  background-color: var(--navy);
+  background-image: url("../assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  line-height: 1.8;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== هدر و منو ===== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+
+  background: linear-gradient(
+    180deg,
+    rgba(13, 27, 46, 0.95) 0%,
+    rgba(13, 27, 46, 0.7) 100%
+  );
+
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--border-gold);
+  box-shadow: var(--shadow);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  text-decoration: none;
+  color: var(--gold-light);
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+
+  background: radial-gradient(circle, var(--brick) 0%, var(--navy) 70%);
+
+  box-shadow: 0 0 12px rgba(212, 168, 83, 0.4);
+}
+
+.logo-text {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+/* ===== دکمه منوی موبایل ===== */
+
+.menu-toggle {
+  display: none;
+
+  flex-direction: column;
+  gap: 5px;
+
+  background: none;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+
+  padding: 8px 10px;
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 24px;
+  height: 2px;
+
+  background: var(--gold);
+
+  transition: var(--transition);
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== منوی اصلی ===== */
+
+.main-nav ul {
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.25rem;
+}
+
+.main-nav a {
+  display: block;
+
+  padding: 0.5rem 1rem;
+
+  color: var(--cream);
+  text-decoration: none;
+
+  font-size: 0.95rem;
+
+  border-radius: 4px;
+  border: 1px solid transparent;
+
+  transition: var(--transition);
+
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "◆";
+
+  position: absolute;
+
+  bottom: 2px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 0.4rem;
+  color: var(--gold);
+
+  opacity: 0;
+
+  transition: var(--transition);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--gold-light);
+
+  background: rgba(139, 37, 0, 0.35);
+
+  border-color: var(--border-gold);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  opacity: 1;
+}
+
+/* ===== بخش اصلی ===== */
+
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 7rem 1.5rem 3rem;
+
+  text-align: center;
+
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(13, 27, 46, 0.55) 0%,
+    rgba(13, 27, 46, 0.25) 60%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+
+  max-width: 900px;
+}
+
+.hero-poetry {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+
+  line-height: 2.2;
+
+  color: var(--gold-light);
+
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(212, 168, 83, 0.3);
+
+  margin-bottom: 1.5rem;
+
+  animation: fadeInUp 1.2s ease;
+}
+
+.hero-poetry .verse {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.hero-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: clamp(2rem, 6vw, 3.5rem);
+
+  color: var(--cream);
+
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+
+  border-top: 2px solid var(--border-gold);
+  border-bottom: 2px solid var(--border-gold);
+
+  display: inline-block;
+
+  animation: fadeInUp 1.5s ease;
+}
+
+.decorative-line {
+  width: 120px;
+  height: 3px;
+
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+  margin: 1.5rem auto;
+}
+
+.scroll-hint {
+  margin-top: 2rem;
+
+  font-size: 0.85rem;
+
+  color: rgba(245, 230, 200, 0.6);
+
+  animation: bounce 2s infinite;
+}
+
+.scroll-hint span {
+  display: block;
+
+  font-size: 1.2rem;
+
+  margin-top: 0.3rem;
+}
+
+/* ===== کانتینر عمومی ===== */
+
+.container {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 0 1.5rem;
+
+  width: 100%;
+}
+
+.section {
+  padding: 4rem 0;
+
+  position: relative;
+}
+
+.section-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+
+  color: var(--gold-light);
+
+  text-align: center;
+
+  margin-bottom: 2rem;
+
+  position: relative;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "✦";
+
+  color: var(--gold);
+
+  margin: 0 0.75rem;
+
+  font-size: 0.8rem;
+}
+
+/* ===== کادر توضیحات ===== */
+
+.description-box {
+  background: var(--parchment-solid);
+
+  border: 2px solid var(--border-gold);
+
+  border-radius: 12px;
+
+  padding: 2rem 2.5rem;
+
+  box-shadow: var(--shadow);
+
+  position: relative;
+
+  backdrop-filter: blur(6px);
+}
+
+.description-box::before {
+  content: "";
+
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+
+  border: 1px solid rgba(212, 168, 83, 0.25);
+
+  border-radius: 8px;
+
+  pointer-events: none;
+}
+
+.description-box h2 {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: 1.6rem;
+
+  color: var(--gold);
+
+  margin-bottom: 1rem;
+}
+
+.description-box p {
+  font-size: 1.05rem;
+
+  color: rgba(245, 230, 200, 0.9);
+
+  text-align: justify;
+
+  line-height: 2;
+}
+
+/* ===== گالری ===== */
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  background: var(--parchment-solid);
+
+  border: 2px solid var(--border-gold);
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  transition: var(--transition);
+
+  box-shadow: var(--shadow);
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--gold);
+
+  box-shadow: 0 12px 40px rgba(212, 168, 83, 0.2);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 220px;
+
+  display: flex;
+
+  align-items: stretch;
+
+  justify-content: flex-start;
+
+  background: linear-gradient(
+    135deg,
+    var(--navy-light) 0%,
+    var(--brick-dark) 100%
+  );
+
+  border-bottom: 2px solid var(--border-gold);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.gallery-image img {
+  width: 220px;
+  height: 220px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  display: block;
+}
+
+.gallery-image .placeholder-icon {
+  width: 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.8rem;
+
+  background: rgba(13, 27, 46, 0.85);
+
+  opacity: 0.8;
+
+  border-right: 1px solid var(--border-gold);
+}
+
+.gallery-image .placeholder-text {
+  position: static;
+
+  width: 70px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+
+  background: rgba(13, 27, 46, 0.85);
+
+  color: var(--gold);
+
+  font-size: 0.8rem;
+
+  text-align: center;
+
+  line-height: 1.6;
+}
+
+.gallery-side {
+  width: 100px;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(13, 27, 46, 0.85);
+
+  color: var(--gold);
+
+  text-align: center;
+
+  padding: 10px;
+}
+
+.gallery-side .placeholder-icon {
+  font-size: 2rem;
+
+  margin-bottom: 8px;
+}
+
+.gallery-side .placeholder-text {
+  font-size: 0.8rem;
+
+  line-height: 1.5;
+}
+
+.gallery-caption {
+  padding: 1rem 1.25rem;
+}
+
+.gallery-caption h3 {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: 1.2rem;
+
+  color: var(--gold-light);
+
+  margin-bottom: 0.4rem;
+}
+
+.gallery-caption p {
+  font-size: 0.9rem;
+
+  color: rgba(245, 230, 200, 0.75);
+}
+
+/* ===== صفحات ===== */
+
+.page-hero {
+  padding: 8rem 1.5rem 3rem;
+
+  text-align: center;
+
+  background: linear-gradient(
+    180deg,
+    rgba(13, 27, 46, 0.85) 0%,
+    transparent 100%
+  );
+}
+
+.page-hero h1 {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+
+  color: var(--gold-light);
+
+  margin-bottom: 0.75rem;
+}
+
+.page-hero p {
+  color: rgba(245, 230, 200, 0.8);
+
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  font-size: 1rem;
+}
+
+/* ===== پادکست ===== */
+
+.podcast-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.25rem;
+
+  padding-bottom: 4rem;
+}
+
+.podcast-card {
+  background: var(--parchment-solid);
+
+  border: 2px solid var(--border-gold);
+
+  border-radius: 12px;
+
+  padding: 1.5rem 2rem;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 1.5rem;
+
+  transition: var(--transition);
+
+  backdrop-filter: blur(6px);
+}
+
+.podcast-card:hover {
+  border-color: var(--gold);
+
+  box-shadow: 0 8px 30px rgba(212, 168, 83, 0.15);
+}
+
+.podcast-number {
+  flex-shrink: 0;
+
+  width: 50px;
+  height: 50px;
+
+  border: 2px solid var(--gold);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: 1.2rem;
+
+  color: var(--gold);
+
+  background: rgba(139, 37, 0, 0.3);
+}
+
+.podcast-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.podcast-info h3 {
+  font-size: 1.1rem;
+
+  color: var(--cream);
+
+  margin-bottom: 0.3rem;
+}
+
+.podcast-info p {
+  font-size: 0.85rem;
+
+  color: rgba(245, 230, 200, 0.65);
+}
+
+.podcast-player {
+  flex-shrink: 0;
+
+  width: 100%;
+
+  max-width: 280px;
+}
+
+.podcast-player audio {
+  width: 100%;
+
+  height: 40px;
+
+  border-radius: 8px;
+}
+
+.podcast-empty {
+  text-align: center;
+
+  padding: 3rem;
+
+  background: var(--parchment);
+
+  border: 2px dashed var(--border-gold);
+
+  border-radius: 12px;
+
+  color: rgba(245, 230, 200, 0.6);
+}
+
+.podcast-empty span {
+  display: block;
+
+  font-size: 2.5rem;
+
+  margin-bottom: 0.75rem;
+
+  opacity: 0.5;
+}
+
+/* ================================================= */
+/* ===== صفحه ارتباط با ما ========================= */
+/* ================================================= */
+
+.contact-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 2rem;
+
+  padding-bottom: 4rem;
+}
+
+.contact-info,
+.contact-form {
+  background: var(--parchment-solid);
+
+  border: 2px solid var(--border-gold);
+
+  border-radius: 12px;
+
+  padding: 2rem;
+
+  backdrop-filter: blur(6px);
+}
+
+.contact-info h2,
+.contact-form h2 {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  color: var(--gold);
+
+  font-size: 1.4rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-bottom: 1rem;
+
+  padding: 0.75rem;
+
+  border-radius: 8px;
+
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.contact-item .icon {
+  font-size: 1.5rem;
+
+  width: 40px;
+
+  text-align: center;
+}
+
+/* ===== فرم ===== */
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 0.4rem;
+
+  color: var(--gold-light);
+
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  background: rgba(13, 27, 46, 0.6);
+
+  border: 1px solid var(--border-gold);
+
+  border-radius: 8px;
+
+  color: var(--cream);
+
+  font-family: "Vazirmatn", sans-serif;
+
+  font-size: 0.95rem;
+
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+
+  border-color: var(--gold);
+
+  box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+
+  min-height: 120px;
+}
+
+.btn {
+  display: inline-block;
+
+  padding: 0.75rem 2rem;
+
+  background: linear-gradient(135deg, var(--brick) 0%, var(--brick-dark) 100%);
+
+  color: var(--cream);
+
+  border: 2px solid var(--gold);
+
+  border-radius: 8px;
+
+  font-family: "Vazirmatn", sans-serif;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+
+  color: var(--navy);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 20px rgba(212, 168, 83, 0.3);
+}
+
+/* ================================================= */
+/* ===== پنجره پیام غیرفعال بودن ================== */
+/* ================================================= */
+
+.message-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 10000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  background: rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(7px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+/* وقتی JS کلاس active را اضافه می‌کند */
+
+.message-modal.active {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+.message-modal-box {
+  width: 100%;
+
+  max-width: 500px;
+
+  position: relative;
+
+  padding: 2.5rem 2rem;
+
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    rgba(26, 46, 74, 0.98),
+    rgba(20, 15, 10, 0.98)
+  );
+
+  border: 2px solid var(--gold);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(212, 168, 83, 0.15);
+
+  transform: translateY(20px) scale(0.96);
+
+  transition: transform 0.3s ease;
+}
+
+.message-modal.active .message-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+/* دکمه ضربدر */
+
+.message-close {
+  position: absolute;
+
+  top: 10px;
+  left: 12px;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-gold);
+
+  border-radius: 50%;
+
+  background: rgba(139, 37, 0, 0.35);
+
+  color: var(--gold-light);
+
+  font-size: 1.6rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.message-close:hover {
+  background: var(--gold);
+
+  color: var(--navy);
+
+  transform: rotate(90deg);
+}
+
+/* آیکون */
+
+.message-modal-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 1rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid var(--gold);
+
+  border-radius: 50%;
+
+  background: rgba(139, 37, 0, 0.35);
+
+  font-size: 2rem;
+
+  box-shadow: 0 0 20px rgba(212, 168, 83, 0.15);
+}
+
+.message-modal-box h2 {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  color: var(--gold-light);
+
+  font-size: 1.45rem;
+
+  margin-bottom: 1rem;
+}
+
+.message-modal-box p {
+  color: rgba(245, 230, 200, 0.82);
+
+  font-size: 0.95rem;
+
+  line-height: 2;
+
+  margin-bottom: 1rem;
+}
+
+.message-contact {
+  padding: 0.8rem;
+
+  border-radius: 8px;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  border: 1px solid rgba(212, 168, 83, 0.25);
+}
+
+.message-contact strong {
+  color: var(--gold-light);
+
+  display: inline-block;
+
+  margin-right: 0.3rem;
+}
+
+/* دکمه «متوجه شدم» */
+
+#messageCloseButton {
+  margin-top: 0.5rem;
+}
+
+/* ===== صفحه چرا؟ ===== */
+
+.why-content {
+  padding-bottom: 4rem;
+}
+
+.why-card {
+  background: var(--parchment-solid);
+
+  border: 2px solid var(--border-gold);
+
+  border-radius: 12px;
+
+  padding: 2rem;
+
+  margin-bottom: 1.5rem;
+
+  backdrop-filter: blur(6px);
+
+  transition: var(--transition);
+}
+
+.why-card:hover {
+  border-color: var(--gold);
+}
+
+.why-card h3 {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: 1.4rem;
+
+  color: var(--gold);
+
+  margin-bottom: 0.75rem;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+}
+
+.why-card h3 .why-icon {
+  font-size: 1.6rem;
+}
+
+.why-card p {
+  color: rgba(245, 230, 200, 0.85);
+
+  text-align: justify;
+
+  line-height: 2;
+}
+
+/* ===== فوتر ===== */
+
+.site-footer {
+  background: rgba(13, 27, 46, 0.92);
+
+  border-top: 2px solid var(--border-gold);
+
+  padding: 2rem 1.5rem;
+
+  text-align: center;
+
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+.footer-poetry {
+  font-family: "Noto Nastaliq Urdu", serif;
+
+  font-size: 1.1rem;
+
+  color: var(--gold);
+
+  margin-bottom: 0.75rem;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+
+  color: rgba(245, 230, 200, 0.5);
+}
+
+.footer-links {
+  margin-top: 1rem;
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--gold);
+
+  text-decoration: none;
+
+  font-size: 0.85rem;
+
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--gold-light);
+}
+
+/* ===== انیمیشن‌ها ===== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* ===== عکس‌های معمولی ===== */
+
+.photo {
+  display: block;
+
+  width: 100%;
+
+  max-width: 320px;
+
+  height: auto;
+
+  margin: 0 auto;
+
+  border: 7px solid #eee8d8;
+
+  border-radius: 4px;
+
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.25),
+    8px 10px 0 rgba(60, 50, 40, 0.12);
+
+  transition: all 0.45s ease;
+
+  cursor: pointer;
+}
+
+.photo:hover {
+  transform: scale(1.06) translateY(-8px) rotate(-1deg);
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.35),
+    12px 15px 0 rgba(60, 50, 40, 0.12),
+    0 0 25px rgba(255, 255, 255, 0.4);
+
+  filter: brightness(1.08) contrast(1.08);
+}
+
+/* ===== انتقال بین صفحات ===== */
+
+.page-transition {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgb(25, 25, 45);
+
+  z-index: 9999;
+
+  transform: translateX(100%);
+
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+
+  pointer-events: none;
+}
+
+.page-transition.active {
+  transform: translateX(0);
+}
+
+/* ================================================= */
+/* ===== ریسپانسیو ================================ */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+
+    top: 0;
+    right: -100%;
+
+    width: 80%;
+    max-width: 320px;
+
+    height: 100vh;
+
+    background: rgba(13, 27, 46, 0.97);
+
+    border-left: 2px solid var(--border-gold);
+
+    padding: 5rem 1.5rem 2rem;
+
+    transition: right 0.35s ease;
+
+    overflow-y: auto;
+  }
+
+  .main-nav.open {
+    right: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+
+    gap: 0.5rem;
+  }
+
+  .main-nav a {
+    padding: 0.85rem 1rem;
+
+    font-size: 1rem;
+
+    border: 1px solid rgba(212, 168, 83, 0.2);
+  }
+
+  .nav-overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 999;
+  }
+
+  .nav-overlay.active {
+    display: block;
+  }
+
+  .hero-poetry {
+    line-height: 2;
+  }
+
+  .description-box {
+    padding: 1.5rem;
+  }
+
+  .podcast-card {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .podcast-player {
+    max-width: 100%;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-image img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .message-modal-box {
+    max-width: 95%;
+
+    padding: 2.2rem 1.3rem 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0.6rem 1rem;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .gallery-image {
+    height: 180px;
+  }
+
+  .gallery-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .gallery-image .placeholder-icon {
+    width: 45px;
+
+    font-size: 1.4rem;
+  }
+
+  .gallery-image .placeholder-text {
+    width: 60px;
+
+    font-size: 0.7rem;
+
+    padding: 5px;
+  }
+
+  .message-modal-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .message-modal-box p {
+    font-size: 0.85rem;
+  }
+}
+/* =====================================================
+FIX نهایی پنجره پیام
+===================================================== */
+
+.message-modal {
+  position: fixed !important;
+  inset: 0 !important;
+
+  z-index: 999999 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  padding: 20px !important;
+
+  background: rgba(0, 0, 0, 0.75) !important;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.message-modal.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.message-modal:target {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.message-modal:target .message-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.message-modal-box {
+  position: relative !important;
+  z-index: 1000000 !important;
+
+  width: min(500px, 100%) !important;
+
+  background: linear-gradient(
+    145deg,
+    rgba(26, 46, 74, 0.99),
+    rgba(20, 15, 10, 0.99)
+  ) !important;
+
+  border: 2px solid var(--gold) !important;
+
+  border-radius: 16px !important;
+
+  padding: 40px 30px 30px !important;
+
+  text-align: center !important;
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(212, 168, 83, 0.25) !important;
+
+  transform: scale(0.9) translateY(20px);
+
+  transition: transform 0.3s ease;
+}
+
+.message-modal.active .message-modal-box {
+  transform: scale(1) translateY(0) !important;
+}
+
+.message-close {
+  position: absolute !important;
+
+  top: 10px !important;
+  left: 12px !important;
+
+  width: 38px !important;
+  height: 38px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid var(--border-gold) !important;
+  border-radius: 50% !important;
+
+  background: rgba(139, 37, 0, 0.4) !important;
+
+  color: var(--gold-light) !important;
+
+  font-size: 1.6rem !important;
+
+  cursor: pointer !important;
+}
+
+.message-modal-icon {
+  width: 70px !important;
+  height: 70px !important;
+
+  margin: 0 auto 20px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 2px solid var(--gold) !important;
+  border-radius: 50% !important;
+
+  background: rgba(139, 37, 0, 0.35) !important;
+
+  font-size: 2rem !important;
+}
+
+.message-modal-box h2 {
+  color: var(--gold-light) !important;
+  margin-bottom: 15px !important;
+}
+
+.message-modal-box p {
+  color: rgba(245, 230, 200, 0.85) !important;
+}
+
+#messageCloseButton {
+  margin-top: 10px !important;
+}
